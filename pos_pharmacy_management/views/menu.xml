@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+      <record id="action_thera_class" model="ir.actions.act_window">
+        <field name="name">Therapeutic Class</field>
+        <field name="res_model">thera.class</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_thera_class"
+              name="Therapeutic Class"
+              action="action_thera_class"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+
+
+
+    <record id="action_side_effect" model="ir.actions.act_window">
+        <field name="name">Side Effect</field>
+        <field name="res_model">medicine.side.effect</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_medicine_side_effect"
+              name="Medicine Side Effect"
+              action="action_side_effect"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+
+
+    <record id="action_salt_unit" model="ir.actions.act_window">
+        <field name="name">Salt Unit</field>
+        <field name="res_model">salt.unit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_salt_unit"
+              name="Salt Unit"
+              action="action_salt_unit"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+
+
+    <record id="action_medicine_safety_advice" model="ir.actions.act_window">
+        <field name="name">Safety Advice</field>
+        <field name="res_model">medicine.safety.advice</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_medicine_safety_advice"
+              name="Safety Advice"
+              action="action_medicine_safety_advice"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+
+    <record id="action_medicine_usage" model="ir.actions.act_window">
+        <field name="name">Medicine Usage</field>
+        <field name="res_model">medicine.usage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_medicine_usage"
+              name="Medicine Usage"
+              action="action_medicine_usage"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+
+
+    <record id="action_medicine_salt" model="ir.actions.act_window">
+        <field name="name">Medicine Salt</field>
+        <field name="res_model">medicine.salt</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_medicine_salt"
+              name="Medicine Salt"
+              action="action_medicine_salt"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+
+    <record id="action_chemical_class" model="ir.actions.act_window">
+        <field name="name">Chemical Class</field>
+        <field name="res_model">chemical.class</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_chemical_class"
+              name="Chemical Class"
+              action="action_chemical_class"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+
+
+    <record id="action_fact_box" model="ir.actions.act_window">
+        <field name="name">Fact Box</field>
+        <field name="res_model">fact.box</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_fact_box"
+              name="Fact Box"
+              action="action_fact_box"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+
+    <record id="action_basic_salt" model="ir.actions.act_window">
+        <field name="name">Basic Salt</field>
+        <field name="res_model">basic.salt</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_basic_salt"
+              name="Basic Salt"
+              action="action_basic_salt"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+
+    <record id="action_action_class" model="ir.actions.act_window">
+        <field name="name">Action Class</field>
+        <field name="res_model">action.class</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_action_class"
+              name="Action Class"
+              action="action_action_class"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+
+    <record id="action_medicine_manufacture" model="ir.actions.act_window">
+        <field name="name">Medicine Manufacturer</field>
+        <field name="res_model">medicine.manufacture</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_medicine_manufacture"
+              name="Medicine Manufacturer"
+              action="action_medicine_manufacture"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+
+    <record id="action_disease_disease" model="ir.actions.act_window">
+        <field name="name">Disease</field>
+        <field name="res_model">disease.disease</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_diseases_diseases"
+              name="Diseases"
+              action="action_disease_disease"
+              parent="point_of_sale.menu_point_config_product"
+              sequence="10"/>
+</odoo>

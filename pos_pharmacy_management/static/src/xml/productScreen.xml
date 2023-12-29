@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+
+    <t t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('leftpane')]" position="before">
+                <div id="side_menu">
+                     <t t-foreach="controlButtons" t-as="cb" t-key="cb.name">
+                         <t t-component="cb.component" t-key="cb.name" style=""/>
+                         <br/>
+                     </t>
+                </div>
+
+        </xpath>
+<!--        <xpath expr="//t[@t-set='_actionName']" position="replace"/>-->
+        <xpath expr="//div[hasclass('control-buttons')]" position="replace"/>
+        <xpath expr="//div[hasclass('pads')]" position="before">
+            <div style="display:flex;justify-content: space-evenly;">
+                <div>
+                    <span class="fa fa-trash" style="font-size:35px;" t-on-click="_onClickDeleteOrder"/>
+                </div>
+                <div>
+                    <span class="fa fa-bars" style="font-size:35px;" t-on-click="_onClickShowSideMenu"/>
+                </div>
+                <div>
+                    <span class="fa fa-close" style="font-size:35px;" t-on-click="_onClickDeleteOrderLine"/>
+                </div>
+                <div>
+                    <span class="fa fa-credit-card" style="font-size:35px;"
+                          t-on-click="() => this.trigger(props.actionToTrigger or 'click-pay')"/>
+                </div>
+
+
+            </div>
+        </xpath>
+    </t>
+
+    <t t-inherit="point_of_sale.ActionpadWidget" t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('validation')]" position="replace">
+             <button class="button set-doctor" t-att-class="{'decentered': isLongName}"
+                     t-on-click="() => this.trigger('click-doctor')">
+                <t t-if="!env.isMobile"><i class="fa fa-user" role="img" aria-label="Doctor" title="Doctor" /></t>
+                 <t t-if="props.doctor">
+                    <t t-esc="props.doctor.name"/>
+                </t>
+                 <t t-else="">
+                    Doctor
+                </t>
+            </button>
+        </xpath>
+    </t>
+</templates>

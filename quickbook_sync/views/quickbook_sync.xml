@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_res_company_inherit_quickbook" model="ir.ui.view">
+        <field name="name">view.res.company.inherit.quickbook</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="page_quickbook_config" string="Quickbook Configuration">
+                    <group>
+                        <button name="action_quickbook_auth" type="object" string="Authentication" class="btn btn-primary"/>
+                        <button name="action_quickbook_refresh_token" type="object" string="Refresh Token" class="btn btn-primary"/>
+                    </group>
+                        <notebook>
+                            <page string="Credential">
+                                <group>
+                                <field name="client_id"/>
+                                <field name="client_sec"/>
+                                <field name="acc_token_expire"/>
+                                <field name="ref_token_expire"/>
+                                <field name="minor_version"/>
+                                <field name="auth_url"/>
+                                <field name="auth_token_url"/>
+                                <field name="redirect_url"/>
+                                <field name="qbo_domain"/>
+                                <field name="api_url"/>
+                                </group>
+                            </page>
+                        </notebook>
+
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

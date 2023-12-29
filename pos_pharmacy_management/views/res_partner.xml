@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="res_partner_doctor_form_view" model="ir.ui.view">
+        <field name="name">res.partner.doctor.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='function']" position="before">
+                <field name="is_doctor"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_res_partner_doctor" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_doctor', '=', True)]</field>
+
+    </record>
+
+
+    <menuitem id="menu_pos_doctors"
+              name="Doctors"
+              action="action_res_partner_doctor"
+              parent="point_of_sale.menu_point_of_sale"
+              sequence="10"/>
+</odoo>

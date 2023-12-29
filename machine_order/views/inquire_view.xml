@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Define the reservation form view -->
+        <record id="view_inquire_form" model="ir.ui.view">
+            <field name="name">product.inquire.form</field>
+            <field name="model">product.inquire</field>
+            <field name="arch" type="xml">
+                <form string="Info">
+                    <sheet>
+                        <group>
+<!--                            <field name="interested" />-->
+                            <field name="phones" string="Contact no" size="10"/>
+                            <field name="project"/>
+                            <field name="look"/>
+                            <field name="looki"/>
+                            <field name="lookii"/>
+                            <field name="name" />
+                            <field name="email" />
+                            <field name="phones"/>
+                            <field name="subject"/>
+                            <field name="talk"/>
+<!--                            <field name="meal"/>-->
+<!--                            <field name="breakfast"/>-->
+<!--                            <field name="lunch"/>-->
+<!--                            <field name="dinner"/>-->
+<!--                            <field name="more"/>-->
+<!--                            <field name="dessert"/>-->
+<!--                            <field name="burger"/>-->
+<!--                            <field name="suggestion"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Define the reservation tree view -->
+        <record id="view_product_inquire_tree" model="ir.ui.view">
+            <field name="name">product.inquire.tree</field>
+            <field name="model">product.inquire</field>
+            <field name="arch" type="xml">
+                <tree>
+<!--                    <field name="interested"/>-->
+                    <field name="phones" string="Contact no" size="10"/>
+                    <field name="project"/>
+                    <field name="look"/>
+                    <field name="looki"/>
+                    <field name="lookii"/>
+                    <field name="name" />
+                    <field name="email" />
+                    <field name="phones"/>
+                    <field name="subject"/>
+                    <field name="talk"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+
+    <record id="action_inquire_list" model="ir.actions.act_window">
+        <field name="name">product.inquire</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.inquire</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+</odoo>

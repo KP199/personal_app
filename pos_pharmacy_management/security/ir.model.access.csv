@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_action_class,access_action_class,pos_pharmacy_management.model_action_class,,1,1,1,1
+access_basic_salt,access_basic_salt,pos_pharmacy_management.model_basic_salt,,1,1,1,1
+access_chemical_class,access_chemical_class,pos_pharmacy_management.model_chemical_class,,1,1,1,1
+access_disease_disease,access_disease_disease,pos_pharmacy_management.model_disease_disease,,1,1,1,1
+access_fact_box,access_fact_box,pos_pharmacy_management.model_fact_box,,1,1,1,1
+access_medicine_manufacture,access_medicine_manufacture,pos_pharmacy_management.model_medicine_manufacture,,1,1,1,1
+access_medicine_salt,access_medicine_salt,pos_pharmacy_management.model_medicine_salt,,1,1,1,1
+access_medicine_usage,access_medicine_usage,pos_pharmacy_management.model_medicine_usage,,1,1,1,1
+access_medicine_safety_advice,access_medicine_safety_advice,pos_pharmacy_management.model_medicine_safety_advice,,1,1,1,1
+access_salt_unit,access_salt_unit,pos_pharmacy_management.model_salt_unit,,1,1,1,1
+access_medicine_side_effect,access_medicine_side_effect,pos_pharmacy_management.model_medicine_side_effect,,1,1,1,1
+access_thera_class,access_thera_class,pos_pharmacy_management.model_thera_class,,1,1,1,1
+access_medicine_multi_price,access_medicine_multi_price,pos_pharmacy_management.model_medicine_multi_price,,1,1,1,1
+

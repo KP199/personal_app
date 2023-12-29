@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="template_header_centered_logow2" inherit_id="website_sale.header_cart_link">
+        <xpath expr="//i[@t-if='_icon']" position="before">
+            <t t-set="_icon" t-value="True"/>
+            <t t-set="_text" t-value="False"/>
+        </xpath>
+    </template>
+     <template id="template_header_centered_logow32" inherit_id="website_sale_wishlist.header_wishlist_link">
+        <xpath expr="//i[@t-if='_icon']" position="before">
+            <t t-set="_icon" t-value="True"/>
+            <t t-set="_text" t-value="False"/>
+        </xpath>
+    </template>
+
+</odoo>
+  vb

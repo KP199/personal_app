@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template inherit_id="website.template_header_default" id="template_header_default1">
+        <xpath expr="//div[@id='top_menu_container']" position="attributes">
+            <attribute name="class">container-fluid justify-content-start justify-content-lg-between</attribute>
+        </xpath>
+    </template>
+</odoo>

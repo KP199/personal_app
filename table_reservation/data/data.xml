@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="model_restaurant_reservation" model="ir.model">
+            <field name="website_form_key">create_reservation</field>
+<!--            <field name="website_form_default_field_id" ref="crm.field_crm_lead__description" />-->
+            <field name="website_form_access">True</field>
+            <field name="website_form_label">Create a Reservation</field>
+        </record>
+
+        <function model="ir.model.fields" name="formbuilder_whitelist">
+            <value>restaurant.reservation</value>
+            <value eval="[
+                'name',
+                'phones',
+                'email',
+                'date',
+                'guests',
+                'time',
+                'times',
+                'location',
+                'meal',
+                'breakfast',
+                'lunch',
+                'dinner',
+                'more',
+                'dessert',
+                'burger',
+                'suggestion',
+            ]"/>
+        </function>
+    </data>
+</odoo>

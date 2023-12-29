@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <record id="ir_cron_quick_book_auto_export" model="ir.cron">
+        <field name="name">QuickBook Auto Export</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="state">code</field>
+        <field name="code">model._action_auto_export_invoice_cron()</field>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+    <record id="view_res_config_setting_form_inherit_quick" model="ir.ui.view">
+        <field name="name">view.res.config.setting.form.inherit.quick</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Quickbooks Online" string="Quickbooks Online"
+                >
+                    <h2>Quickbooks Online</h2>
+                    <div class="row mt16 o_settings_container" name="fiscal_localization_setting_container"
+                    >
+                        <div class="col-12 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="is_enable_quick_export"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Enable Auto Export</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

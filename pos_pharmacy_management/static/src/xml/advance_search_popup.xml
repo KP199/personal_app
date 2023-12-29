@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+     <t t-name="AdvanceSearchPopup" owl="1">
+        <div class="popup">
+
+                <header class="title drag-handle">
+                    Advance Search
+
+
+                </header>
+            <main>
+
+                <div>
+                    <input type="text" id="search_name" name="search_name" placeholder="Search For Manufacturer" t-on-input="(ev) => this.SearchByName(ev)"/>
+                    <div id="result" style="text-align:justify;border: 1px dotted #ccc;"/>
+                    <br/>
+                    <br/>
+                    <input type="text" id="search_medicine_salt" name="search_medicine_salt" placeholder="Search For Medicine Salt"/>
+                    <br/>
+                    <br/>
+                    <input type="text" id="search_salt_composition" name="search_salt_composition" placeholder="Search For Salt Composition"/>
+                    <br/>
+                    <br/>
+
+                </div>
+
+
+
+            </main>
+            <footer class="footer centered">
+                        <div class="button cancel" t-on-mousedown.prevent="cancel">
+                            CANCEL
+                        </div>
+                <div class="button confirm highlight" t-on-mousedown.prevent="confirm">
+                    APPLY
+                        </div>
+                    </footer>
+        </div>
+     </t>
+
+
+
+    <t t-name="pos_pharmacy_management.SearchDropdown">
+        <div style="position:relative;">
+                <a class="dropdown-item"
+                   t-foreach="results" t-as="result"
+                   >
+                    <t t-out="result['name']"/>
+                </a>
+        </div>
+    </t>
+
+</templates>

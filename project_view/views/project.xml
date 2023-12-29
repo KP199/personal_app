@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_project_management_form" model="ir.ui.view">
+        <field name="name">project.management.form</field>
+        <field name="model">project.management</field>
+        <field name="arch" type="xml">
+            <form string="Projects">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+
+
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" required="1"/>
+
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="client_id"
+                                   domain="[('groups_id', 'in', [28,])]"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="site"/>
+
+                        </group>
+                        <group>
+                            <field name="project_cost"/>
+                            <field name="employee_count"/>
+                            <field name="shift_time"/>
+
+                            <field name="address"/>
+                        </group>
+
+                    </group>
+                    <field name="employee_ids" nolabel="1"/>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_management_kanban_view">
+        <field name="name">project.management.kanban.view</field>
+        <field name="model">project.management</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="client_id" create="false" class="o_kanban_small_column o_opportunity_kanban"
+                    archivable="false">
+                <!--                    sample="1" js_class="crm_kanban">-->
+                <field name="client_id"
+                       readonly="1"/>
+                <field name="name"/>
+                <field name="employee_ids"/>
+                <field name="project_cost"/>
+                <field name="state"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click oe_kanban_card d-flex flex-column">
+
+                            <div class="oe_kanban_content flex-grow-1">
+                                <div class="o_kanban_record_title oe_kanban_details">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    Project Cost:
+                                    <field name="project_cost"/>
+
+                                </div>
+
+                            </div>
+                            <div class="oe_kanban_footer">
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        Total Employees :
+                                        <field name="employee_count"/>
+
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <field name="state"/>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_management_tree_view">
+        <field name="name">project.management.tree.view</field>
+        <field name="model">project.management</field>
+        <field name="arch" type="xml">
+            <tree string="Projects">
+                <field name="name"/>
+                <field name="client_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="project_cost"/>
+                <field name="employee_count"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_project_management" model="ir.actions.act_window">
+        <field name="name">Agreements</field>
+        <field name="res_model">project.management</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+
+</odoo>

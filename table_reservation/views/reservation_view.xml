@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Define the reservation form view -->
+        <record id="view_reservation_form" model="ir.ui.view">
+            <field name="name">reservation.form</field>
+            <field name="model">restaurant.reservation</field>
+            <field name="arch" type="xml">
+                <form string="Reservation">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="phones" string="Contact no" size="10"/>
+                            <field name="email"/>
+                            <field name="date" />
+                            <field name="time" />
+                            <field name="times"/>
+                            <field name="guests"/>
+                            <field name="location"/>
+                            <field name="meal"/>
+                            <field name="breakfast"/>
+                            <field name="lunch"/>
+                            <field name="dinner"/>
+                            <field name="more"/>
+                            <field name="dessert"/>
+                            <field name="burger"/>
+                            <field name="suggestion"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Define the reservation tree view -->
+        <record id="view_reservation_tree" model="ir.ui.view">
+            <field name="name">reservation.tree</field>
+            <field name="model">restaurant.reservation</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="phones" string="Contact no" size="10"/>
+                    <field name="email"/>
+                    <field name="date"/>
+                    <field name="time"/>
+                    <field name="times"/>
+                    <field name="guests"/>
+                    <field name="location"/>
+                    <field name="meal"/>
+                    <field name="breakfast"/>
+                    <field name="lunch"/>
+                    <field name="dinner"/>
+                    <field name="more"/>
+                    <field name="dessert"/>
+                    <field name="burger"/>
+                    <field name="suggestion"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+
+    <record id="action_reservation_list" model="ir.actions.act_window">
+        <field name="name">Reservation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">restaurant.reservation</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+</odoo>

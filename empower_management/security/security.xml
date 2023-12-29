@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="group_client_user" model="res.groups">
+            <field name="name">Client User</field>
+        </record>
+    </data>
+
+
+    <record id="project_client_rule" model="ir.rule">
+        <field name="name">Project Client Rule</field>
+        <field name="model_id" ref="project.model_project_project"/>
+        <field name="domain_force">[('activity_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('empower_management.group_client_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+
+
+<!--    <record id="project_task_client_rule2" model="ir.rule">-->
+<!--        <field name="name">Project Task Client Rule</field>-->
+<!--        <field name="model_id" ref="project.model_project_task"/>-->
+<!--        <field name="domain_force">[('project_id', 'in', user.project_ids.ids)]</field>-->
+<!--        <field name="groups" eval="[(4, ref('empower_management.group_client_user'))]"/>-->
+<!--        <field name="perm_read" eval="True"/>-->
+<!--        <field name="perm_write" eval="False"/>-->
+<!--        <field name="perm_create" eval="False"/>-->
+<!--        <field name="perm_unlink" eval="False"/>-->
+<!--    </record>-->
+
+<!--       <record id="project_task_analysis_client_rule" model="ir.rule">-->
+<!--        <field name="name">Project Task Analysis Rule</field>-->
+<!--        <field name="model_id" ref="project.model_report_project_task_user"/>-->
+<!--        <field name="domain_force">[('project_id', 'in', user.project_ids.ids)]</field>-->
+<!--        <field name="groups" eval="[(4, ref('empower_management.group_client_user'))]"/>-->
+<!--        <field name="perm_read" eval="True"/>-->
+<!--        <field name="perm_write" eval="False"/>-->
+<!--        <field name="perm_create" eval="False"/>-->
+<!--        <field name="perm_unlink" eval="False"/>-->
+<!--    </record>-->
+
+
+
+</odoo>

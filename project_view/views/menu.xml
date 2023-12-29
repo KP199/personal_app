@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_project_master_data"
+              name="Empower"
+              sequence="10"/>
+    <menuitem id="menu_project_root"
+              name="Agreements"
+              action="action_project_management"
+              parent="menu_project_master_data"
+              sequence="2"/>
+
+    <menuitem id="menu_project_operations"
+              name="Employee"
+              action="hr.open_view_employee_list_my"
+              parent="menu_project_master_data"
+              sequence="10"/>
+
+
+
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_sale_inherit_form_inherit_quick" model="ir.ui.view">
+        <field name="name">view.sale.inherit.form.inherit.quick</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_fetch_tax_quickbook" string="GET QBO TAXES" type="object"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

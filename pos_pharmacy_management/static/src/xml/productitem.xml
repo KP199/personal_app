@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="point_of_sale.ProductItem" t-inherit-mode="extension">
+
+        <xpath expr="//article" position="replace">
+
+            <t t-if="!env.pos.showProductList">
+               <article class="product" tabindex="0" t-on-keypress="spaceClickProduct"
+                        t-on-click="() => this.trigger('click-product', props.product)"
+                        t-att-data-product-id="props.product.id"
+                        t-attf-aria-labelledby="article_product_{{props.product.id}}">
+                        <div class="product-img">
+                            <img t-att-src="imageUrl" t-att-alt="props.product.display_name"/>
+                        </div>
+                   <div class="product-content">
+                            <div class="product-name" t-attf-id="article_product_{{props.product.id}}">
+                                <t t-esc="props.product.display_name"/>
+                            </div>
+                       <span class="price-tag">
+                        <t t-esc="price"/>
+                        </span>
+                        </div>
+               </article>
+            </t>
+            <t t-else="">
+             <article class="product" tabindex="0" t-on-keypress="spaceClickProduct"
+                      t-on-click="() => this.trigger('click-product', props.product)"
+                      t-att-data-product-id="props.product.id"
+                      t-attf-aria-labelledby="article_product_{{props.product.id}}">
+                <div style="display:flex;justify-content: space-between;font-size:14px;">
+
+               <div class="text-align:left;">
+
+                       <div class="product-img">
+                        <img t-att-src="imageUrl" t-att-alt="props.product.display_name"
+                        />
+                       </div>
+
+               </div>
+                    <div style="text-align:left;">
+                    <span t-esc="props.product.display_name" style="text-align:left;"/>
+
+                        <br/>
+                        <span t-esc="price" style="text-align:left;"/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <span style="color:black;" t-on-click="_onClickAlternateMedicine">Alternate Medicines</span>
+
+                   </div>
+                    <div style="text-align:left;">
+                      <span t-esc="props.product.medicine_manufacture_id[1]"/>
+                        <br/>
+                        <t t-if="props.product.medicine_usage_ids">
+                            <span t-esc="props.medicine_usge"/>
+                        </t>
+                   </div>
+                    <div>
+                          <t t-if="props.product.store_temperature">
+                      <span t-esc="props.product.store_temperature"/>
+                          </t>
+                        <br/>
+                        <t t-if="props.product.basic_salt_ids">
+                            <span t-esc="props.basic_salt"/>
+                        </t>
+                   </div>
+                    <div>
+                        <span class="fa fa-medkit show_info" t-on-click="_onClickShowMedicineInfo"/>
+                    </div>
+
+               </div>
+                                    </article>
+
+
+            </t>
+        </xpath>
+        <xpath expr="//div[hasclass('product-img')]" position="after">
+           <span class="fa fa-medkit show_info" t-on-click="_onClickShowMedicineInfo"/>
+        </xpath>
+    </t>
+
+
+    <t t-inherit="point_of_sale.ProductsWidget" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('product-list')]" position="replace">
+            <div t-if="productsToDisplay.length != 0 and !env.pos.showProductList" class="product-list">
+                    <t t-foreach="productsToDisplay" t-as="product" t-key="product.id">
+                        <ProductItem product="product"/>
+                    </t>
+            </div>
+            <div t-elif="productsToDisplay.length != 0 and env.pos.showProductList" class="product-list"
+                 style="display:list-item;">
+                    <t t-foreach="productsToDisplay" t-as="product" t-key="product.id">
+                        <ProductItem product="product"/>
+                    </t>
+            </div>
+        </xpath>
+    </t>
+
+
+    <t t-inherit="point_of_sale.ProductsWidgetControlPanel" t-inherit-mode="extension">
+        <xpath expr="//span[hasclass('breadcrumb-home')]" position="before">
+           <span class="fa fa-search" style="font-size:24px;margin-top:10px;color:#017e84;" t-on-click="_onClickShowSearchPopup"/>
+
+           <span class="fa fa-bars" style="font-size:24px;margin-top:10px;color:#017e84;padding-left:10px;" t-on-click="_onClickShowProductList"/>
+        </xpath>
+
+    </t>
+
+    <t t-name="MedicineInfoPopup" owl="1">
+        <div class="popup">
+
+            <header class="title drag-handle">
+                    <span t-esc="props.info.display_name"/>
+
+
+            </header>
+            <main>
+            <div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked="checked"/>
+                <input class="radio" id="two" name="group" type="radio"/>
+                <input class="radio" id="three" name="group" type="radio"/>
+                <input class="radio" id="four" name="group" type="radio"/>
+                <div class="tabs">
+  <label class="tab" id="one-tab" for="one">Basic Salt</label>
+                    <label class="tab" id="two-tab" for="two">Usage</label>
+                    <label class="tab" id="three-tab" for="three">Safety Advice</label>
+                    <label class="tab" id="four-tab" for="four">Side Effect</label>
+    </div>
+                <div class="panels">
+  <div class="panel" id="one-panel">
+                                                  <t t-foreach="props.basic_salt" t-as="item" t-key="item.id">
+                                                    <span t-esc="item.name"/>
+                                                      <br/>
+                                                </t>
+                                            </div>
+                    <div class="panel" id="two-panel">
+                                                             <t t-foreach="props.medicine_usge" t-as="usage"
+                                                                t-key="usage.id">
+                                                    <h3 t-esc="usage.name"/>
+                                                                 <h5 t-esc="usage.description"/>
+                                                </t>
+  </div>
+                    <div class="panel" id="three-panel">
+                         <t t-foreach="props.safety_advice" t-as="advice" t-key="advice.id">
+                                                    <h3 t-esc="advice.name"/>
+                             <h5 t-esc="advice.safety_advice"/>
+                                                </t>
+
+  </div>
+                    <div class="panel" id="four-panel">
+                         <t t-foreach="props.safety_advice" t-as="advice" t-key="advice.id">
+                                                    <h3 t-esc="advice.name"/>
+                             <h5 t-esc="advice.safety_advice"/>
+                                                </t>
+
+  </div>
+  </div>
+                  </div>
+
+
+                <!--<input checked="checked" id="tab1" type="radio" name="pct"/>-->
+                <!--    <input id="tab2" type="radio" name="pct"/>-->
+                <!--    <input id="tab3" type="radio" name="pct"/>-->
+                <!--    <nav>-->
+                <!--    <ul>-->
+                <!--      <li class="tab1">-->
+                <!--        <label for="tab1">Basic Salt</label>-->
+                <!--      </li>-->
+                <!--        <li class="tab2">-->
+                <!--        <label for="tab2">Usage</label>-->
+                <!--      </li>-->
+                <!--        <li class="tab3">-->
+                <!--        <label for="tab3">Safety Advice</label>-->
+                <!--      </li>-->
+                <!--    </ul>-->
+                <!--  </nav>-->
+                <!--    <section>-->
+                <!--    <div class="tab1">-->
+                <!--                                <div style="text-align:left;">-->
+
+                <!--                                        <t t-foreach="props.basic_salt" t-as="item" t-key="item.id">-->
+                <!--                                            <span t-esc="item.name"/>-->
+                <!--                                            <br/>-->
+                <!--                                        </t>-->
+                <!--                                    </div>-->
+                <!--    </div>-->
+                <!--        <div class="tab2">-->
+                <!--                            <div style="text-align:left;">-->
+
+                <!--                                        <t t-foreach="props.medicine_usge" t-as="usage" t-key="usage.id">-->
+                <!--                                            <h3 t-esc="usage.name"/>-->
+                <!--                                            <h5 t-esc="usage.description"/>-->
+                <!--                                        </t>-->
+                <!--                                    </div>-->
+                <!--    </div>-->
+                <!--        <div class="tab3">-->
+                <!--         <div style="text-align:left;">-->
+
+                <!--                                        <t t-foreach="props.safety_advice" t-as="advice" t-key="advice.id">-->
+                <!--                                            <h3 t-esc="advice.name"/>-->
+                <!--                                            <h5 t-esc="advice.safety_advice"/>-->
+                <!--                                        </t>-->
+                <!--                                    </div>-->
+                <!--    </div>-->
+                <!--  </section>-->
+                <!--</div>-->
+
+
+                <!--                <div style="display:flex;justify-content:space-between;">-->
+                <!--                    <div>-->
+                <!--                        Basic Salt-->
+                <!--                    </div>-->
+                <!--                    <div>-->
+                <!--                        Usage-->
+                <!--                    </div>-->
+                <!--                    <div>-->
+                <!--                        Side Effects-->
+                <!--                    </div>-->
+                <!--                    <div>-->
+                <!--                        Safety Advices-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <br/>-->
+                <!--                <br/>-->
+                <!--                <div>-->
+                <!--                    <div style="text-align:left;">-->
+
+                <!--                        <t t-foreach="props.basic_salt" t-as="item" t-key="item.id">-->
+                <!--                            <span t-esc="item.name"/>-->
+                <!--                            <br/>-->
+                <!--                        </t>-->
+                <!--                    </div>-->
+                <!--                    <br/>-->
+                <!--                    <br/>-->
+                <!--                     <div style="text-align:left;">-->
+
+                <!--                        <t t-foreach="props.medicine_usge" t-as="usage" t-key="usage.id">-->
+                <!--                            <h3 t-esc="usage.name"/>-->
+                <!--                            <h5 t-esc="usage.description"/>-->
+                <!--                        </t>-->
+                <!--                    </div>-->
+
+
+                <!--                </div>-->
+
+
+
+
+
+            </main>
+            <footer class="footer centered">
+                        <div class="button cancel" t-on-mousedown.prevent="cancel">
+                            EXIT
+                        </div>
+
+                    </footer>
+
+  </div>
+
+
+        </t>
+        </templates>

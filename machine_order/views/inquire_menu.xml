@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_inquire" name="Inquire" sequence="10"/>
+        <menuitem id="menu_inquire_list" name="Inquire List" parent="menu_inquire" action="action_inquire_list"/>
+    </data>
+</odoo>
